@@ -1,0 +1,958 @@
+{
+  "events": [
+    {
+      "currentStep": {
+        "actions": [
+          {
+            "app": "/basic-3", 
+            "type": "RestartApplication"
+          }
+        ]
+      }, 
+      "eventType": "deployment_info", 
+      "plan": {
+        "id": "5195c38c-edd7-493d-b6f5-915a0ba7967d", 
+        "original": {
+          "apps": [
+            {
+              "acceptedResourceRoles": null, 
+              "args": null, 
+              "backoffFactor": 1.15, 
+              "backoffSeconds": 1, 
+              "cmd": "python3 -m http.server 8080", 
+              "constraints": [], 
+              "container": {
+                "docker": {
+                  "forcePullImage": false, 
+                  "image": "python:3", 
+                  "network": "BRIDGE", 
+                  "parameters": [], 
+                  "portMappings": [
+                    {
+                      "containerPort": 8080, 
+                      "hostPort": 0, 
+                      "protocol": "tcp", 
+                      "servicePort": 10000
+                    }
+                  ], 
+                  "privileged": false
+                }, 
+                "type": "DOCKER", 
+                "volumes": []
+              }, 
+              "cpus": 0.5, 
+              "dependencies": [], 
+              "disk": 0.0, 
+              "env": {}, 
+              "executor": "", 
+              "healthChecks": [], 
+              "id": "/basic-3", 
+              "instances": 1, 
+              "labels": {}, 
+              "maxLaunchDelaySeconds": 3600, 
+              "mem": 32.0, 
+              "ports": [
+                10000
+              ], 
+              "requirePorts": false, 
+              "storeUrls": [], 
+              "upgradeStrategy": {
+                "maximumOverCapacity": 1.0, 
+                "minimumHealthCapacity": 1.0
+              }, 
+              "uris": [], 
+              "user": null, 
+              "version": "2015-11-29T12:29:11.805Z", 
+              "versionInfo": {
+                "lastConfigChangeAt": "2015-11-29T05:26:19.581Z", 
+                "lastScalingAt": "2015-11-29T12:29:11.805Z"
+              }
+            }
+          ], 
+          "dependencies": [], 
+          "groups": [], 
+          "id": "/", 
+          "version": "2015-11-29T12:29:11.805Z"
+        }, 
+        "steps": [
+          {
+            "actions": [
+              {
+                "app": "/basic-3", 
+                "type": "RestartApplication"
+              }
+            ]
+          }
+        ], 
+        "target": {
+          "apps": [
+            {
+              "acceptedResourceRoles": null, 
+              "args": null, 
+              "backoffFactor": 1.15, 
+              "backoffSeconds": 1, 
+              "cmd": "python3 -m http.server 8080", 
+              "constraints": [], 
+              "container": {
+                "docker": {
+                  "forcePullImage": false, 
+                  "image": "python:3", 
+                  "network": "BRIDGE", 
+                  "parameters": [], 
+                  "portMappings": [
+                    {
+                      "containerPort": 8080, 
+                      "hostPort": 0, 
+                      "protocol": "tcp", 
+                      "servicePort": 10000
+                    }
+                  ], 
+                  "privileged": false
+                }, 
+                "type": "DOCKER", 
+                "volumes": []
+              }, 
+              "cpus": 0.5, 
+              "dependencies": [], 
+              "disk": 0.0, 
+              "env": {}, 
+              "executor": "", 
+              "healthChecks": [], 
+              "id": "/basic-3", 
+              "instances": 1, 
+              "labels": {}, 
+              "maxLaunchDelaySeconds": 3600, 
+              "mem": 32.0, 
+              "ports": [
+                10000
+              ], 
+              "requirePorts": false, 
+              "storeUrls": [], 
+              "upgradeStrategy": {
+                "maximumOverCapacity": 1.0, 
+                "minimumHealthCapacity": 1.0
+              }, 
+              "uris": [], 
+              "user": null, 
+              "version": "2015-11-29T12:41:00.828Z", 
+              "versionInfo": {
+                "lastConfigChangeAt": "2015-11-29T05:26:19.581Z", 
+                "lastScalingAt": "2015-11-29T12:41:00.828Z"
+              }
+            }
+          ], 
+          "dependencies": [], 
+          "groups": [], 
+          "id": "/", 
+          "version": "2015-11-29T12:41:00.828Z"
+        }, 
+        "version": "2015-11-29T12:41:00.828Z"
+      }, 
+      "timestamp": "2015-11-29T12:41:00.858Z"
+    }, 
+    {
+      "eventType": "group_change_success", 
+      "groupId": "/", 
+      "timestamp": "2015-11-29T12:41:00.908Z", 
+      "version": "2015-11-29T12:41:00.828Z"
+    }, 
+    {
+      "appId": "/basic-3", 
+      "eventType": "status_update_event", 
+      "host": "mesos-slave02", 
+      "message": "", 
+      "ports": [
+        31264
+      ], 
+      "slaveId": "697ee623-6bd9-4cd7-a44a-b44a98479fdc-S0", 
+      "taskId": "basic-3.722360c9-9696-11e5-81a1-02c4b78b488c", 
+      "taskStatus": "TASK_RUNNING", 
+      "timestamp": "2015-11-29T12:41:01.821Z", 
+      "version": "2015-11-29T12:41:00.828Z"
+    }, 
+    {
+      "eventType": "deployment_success", 
+      "id": "5195c38c-edd7-493d-b6f5-915a0ba7967d", 
+      "plan": {
+        "id": "5195c38c-edd7-493d-b6f5-915a0ba7967d", 
+        "original": {
+          "apps": [
+            {
+              "acceptedResourceRoles": null, 
+              "args": null, 
+              "backoffFactor": 1.15, 
+              "backoffSeconds": 1, 
+              "cmd": "python3 -m http.server 8080", 
+              "constraints": [], 
+              "container": {
+                "docker": {
+                  "forcePullImage": false, 
+                  "image": "python:3", 
+                  "network": "BRIDGE", 
+                  "parameters": [], 
+                  "portMappings": [
+                    {
+                      "containerPort": 8080, 
+                      "hostPort": 0, 
+                      "protocol": "tcp", 
+                      "servicePort": 10000
+                    }
+                  ], 
+                  "privileged": false
+                }, 
+                "type": "DOCKER", 
+                "volumes": []
+              }, 
+              "cpus": 0.5, 
+              "dependencies": [], 
+              "disk": 0.0, 
+              "env": {}, 
+              "executor": "", 
+              "healthChecks": [], 
+              "id": "/basic-3", 
+              "instances": 1, 
+              "labels": {}, 
+              "maxLaunchDelaySeconds": 3600, 
+              "mem": 32.0, 
+              "ports": [
+                10000
+              ], 
+              "requirePorts": false, 
+              "storeUrls": [], 
+              "upgradeStrategy": {
+                "maximumOverCapacity": 1.0, 
+                "minimumHealthCapacity": 1.0
+              }, 
+              "uris": [], 
+              "user": null, 
+              "version": "2015-11-29T12:29:11.805Z", 
+              "versionInfo": {
+                "lastConfigChangeAt": "2015-11-29T05:26:19.581Z", 
+                "lastScalingAt": "2015-11-29T12:29:11.805Z"
+              }
+            }
+          ], 
+          "dependencies": [], 
+          "groups": [], 
+          "id": "/", 
+          "version": "2015-11-29T12:29:11.805Z"
+        }, 
+        "steps": [
+          {
+            "actions": [
+              {
+                "app": "/basic-3", 
+                "type": "RestartApplication"
+              }
+            ]
+          }
+        ], 
+        "target": {
+          "apps": [
+            {
+              "acceptedResourceRoles": null, 
+              "args": null, 
+              "backoffFactor": 1.15, 
+              "backoffSeconds": 1, 
+              "cmd": "python3 -m http.server 8080", 
+              "constraints": [], 
+              "container": {
+                "docker": {
+                  "forcePullImage": false, 
+                  "image": "python:3", 
+                  "network": "BRIDGE", 
+                  "parameters": [], 
+                  "portMappings": [
+                    {
+                      "containerPort": 8080, 
+                      "hostPort": 0, 
+                      "protocol": "tcp", 
+                      "servicePort": 10000
+                    }
+                  ], 
+                  "privileged": false
+                }, 
+                "type": "DOCKER", 
+                "volumes": []
+              }, 
+              "cpus": 0.5, 
+              "dependencies": [], 
+              "disk": 0.0, 
+              "env": {}, 
+              "executor": "", 
+              "healthChecks": [], 
+              "id": "/basic-3", 
+              "instances": 1, 
+              "labels": {}, 
+              "maxLaunchDelaySeconds": 3600, 
+              "mem": 32.0, 
+              "ports": [
+                10000
+              ], 
+              "requirePorts": false, 
+              "storeUrls": [], 
+              "upgradeStrategy": {
+                "maximumOverCapacity": 1.0, 
+                "minimumHealthCapacity": 1.0
+              }, 
+              "uris": [], 
+              "user": null, 
+              "version": "2015-11-29T12:41:00.828Z", 
+              "versionInfo": {
+                "lastConfigChangeAt": "2015-11-29T05:26:19.581Z", 
+                "lastScalingAt": "2015-11-29T12:41:00.828Z"
+              }
+            }
+          ], 
+          "dependencies": [], 
+          "groups": [], 
+          "id": "/", 
+          "version": "2015-11-29T12:41:00.828Z"
+        }, 
+        "version": "2015-11-29T12:41:00.828Z"
+      }, 
+      "timestamp": "2015-11-29T12:41:01.830Z"
+    }, 
+    {
+      "currentStep": {
+        "actions": [
+          {
+            "app": "/basic-3", 
+            "type": "RestartApplication"
+          }
+        ]
+      }, 
+      "eventType": "deployment_step_success", 
+      "plan": {
+        "id": "5195c38c-edd7-493d-b6f5-915a0ba7967d", 
+        "original": {
+          "apps": [
+            {
+              "acceptedResourceRoles": null, 
+              "args": null, 
+              "backoffFactor": 1.15, 
+              "backoffSeconds": 1, 
+              "cmd": "python3 -m http.server 8080", 
+              "constraints": [], 
+              "container": {
+                "docker": {
+                  "forcePullImage": false, 
+                  "image": "python:3", 
+                  "network": "BRIDGE", 
+                  "parameters": [], 
+                  "portMappings": [
+                    {
+                      "containerPort": 8080, 
+                      "hostPort": 0, 
+                      "protocol": "tcp", 
+                      "servicePort": 10000
+                    }
+                  ], 
+                  "privileged": false
+                }, 
+                "type": "DOCKER", 
+                "volumes": []
+              }, 
+              "cpus": 0.5, 
+              "dependencies": [], 
+              "disk": 0.0, 
+              "env": {}, 
+              "executor": "", 
+              "healthChecks": [], 
+              "id": "/basic-3", 
+              "instances": 1, 
+              "labels": {}, 
+              "maxLaunchDelaySeconds": 3600, 
+              "mem": 32.0, 
+              "ports": [
+                10000
+              ], 
+              "requirePorts": false, 
+              "storeUrls": [], 
+              "upgradeStrategy": {
+                "maximumOverCapacity": 1.0, 
+                "minimumHealthCapacity": 1.0
+              }, 
+              "uris": [], 
+              "user": null, 
+              "version": "2015-11-29T12:29:11.805Z", 
+              "versionInfo": {
+                "lastConfigChangeAt": "2015-11-29T05:26:19.581Z", 
+                "lastScalingAt": "2015-11-29T12:29:11.805Z"
+              }
+            }
+          ], 
+          "dependencies": [], 
+          "groups": [], 
+          "id": "/", 
+          "version": "2015-11-29T12:29:11.805Z"
+        }, 
+        "steps": [
+          {
+            "actions": [
+              {
+                "app": "/basic-3", 
+                "type": "RestartApplication"
+              }
+            ]
+          }
+        ], 
+        "target": {
+          "apps": [
+            {
+              "acceptedResourceRoles": null, 
+              "args": null, 
+              "backoffFactor": 1.15, 
+              "backoffSeconds": 1, 
+              "cmd": "python3 -m http.server 8080", 
+              "constraints": [], 
+              "container": {
+                "docker": {
+                  "forcePullImage": false, 
+                  "image": "python:3", 
+                  "network": "BRIDGE", 
+                  "parameters": [], 
+                  "portMappings": [
+                    {
+                      "containerPort": 8080, 
+                      "hostPort": 0, 
+                      "protocol": "tcp", 
+                      "servicePort": 10000
+                    }
+                  ], 
+                  "privileged": false
+                }, 
+                "type": "DOCKER", 
+                "volumes": []
+              }, 
+              "cpus": 0.5, 
+              "dependencies": [], 
+              "disk": 0.0, 
+              "env": {}, 
+              "executor": "", 
+              "healthChecks": [], 
+              "id": "/basic-3", 
+              "instances": 1, 
+              "labels": {}, 
+              "maxLaunchDelaySeconds": 3600, 
+              "mem": 32.0, 
+              "ports": [
+                10000
+              ], 
+              "requirePorts": false, 
+              "storeUrls": [], 
+              "upgradeStrategy": {
+                "maximumOverCapacity": 1.0, 
+                "minimumHealthCapacity": 1.0
+              }, 
+              "uris": [], 
+              "user": null, 
+              "version": "2015-11-29T12:41:00.828Z", 
+              "versionInfo": {
+                "lastConfigChangeAt": "2015-11-29T05:26:19.581Z", 
+                "lastScalingAt": "2015-11-29T12:41:00.828Z"
+              }
+            }
+          ], 
+          "dependencies": [], 
+          "groups": [], 
+          "id": "/", 
+          "version": "2015-11-29T12:41:00.828Z"
+        }, 
+        "version": "2015-11-29T12:41:00.828Z"
+      }, 
+      "timestamp": "2015-11-29T12:41:01.829Z"
+    }, 
+    {
+      "appId": "/basic-3", 
+      "eventType": "status_update_event", 
+      "host": "mesos-slave02", 
+      "message": "", 
+      "ports": [
+        31648
+      ], 
+      "slaveId": "697ee623-6bd9-4cd7-a44a-b44a98479fdc-S0", 
+      "taskId": "basic-3.cb889478-9694-11e5-81a1-02c4b78b488c", 
+      "taskStatus": "TASK_KILLED", 
+      "timestamp": "2015-11-29T12:41:02.353Z", 
+      "version": "2015-11-29T12:29:11.805Z"
+    }, 
+    {
+      "currentStep": {
+        "actions": [
+          {
+            "app": "/basic-3", 
+            "type": "RestartApplication"
+          }
+        ]
+      }, 
+      "eventType": "deployment_info", 
+      "plan": {
+        "id": "bd3681eb-8c82-4b4b-bf61-a45bee18c912", 
+        "original": {
+          "apps": [
+            {
+              "acceptedResourceRoles": null, 
+              "args": null, 
+              "backoffFactor": 1.15, 
+              "backoffSeconds": 1, 
+              "cmd": "python3 -m http.server 8080", 
+              "constraints": [], 
+              "container": {
+                "docker": {
+                  "forcePullImage": false, 
+                  "image": "python:3", 
+                  "network": "BRIDGE", 
+                  "parameters": [], 
+                  "portMappings": [
+                    {
+                      "containerPort": 8080, 
+                      "hostPort": 0, 
+                      "protocol": "tcp", 
+                      "servicePort": 10000
+                    }
+                  ], 
+                  "privileged": false
+                }, 
+                "type": "DOCKER", 
+                "volumes": []
+              }, 
+              "cpus": 0.5, 
+              "dependencies": [], 
+              "disk": 0.0, 
+              "env": {}, 
+              "executor": "", 
+              "healthChecks": [], 
+              "id": "/basic-3", 
+              "instances": 1, 
+              "labels": {}, 
+              "maxLaunchDelaySeconds": 3600, 
+              "mem": 32.0, 
+              "ports": [
+                10000
+              ], 
+              "requirePorts": false, 
+              "storeUrls": [], 
+              "upgradeStrategy": {
+                "maximumOverCapacity": 1.0, 
+                "minimumHealthCapacity": 1.0
+              }, 
+              "uris": [], 
+              "user": null, 
+              "version": "2015-11-29T12:41:00.828Z", 
+              "versionInfo": {
+                "lastConfigChangeAt": "2015-11-29T05:26:19.581Z", 
+                "lastScalingAt": "2015-11-29T12:41:00.828Z"
+              }
+            }
+          ], 
+          "dependencies": [], 
+          "groups": [], 
+          "id": "/", 
+          "version": "2015-11-29T12:41:00.828Z"
+        }, 
+        "steps": [
+          {
+            "actions": [
+              {
+                "app": "/basic-3", 
+                "type": "RestartApplication"
+              }
+            ]
+          }
+        ], 
+        "target": {
+          "apps": [
+            {
+              "acceptedResourceRoles": null, 
+              "args": null, 
+              "backoffFactor": 1.15, 
+              "backoffSeconds": 1, 
+              "cmd": "python3 -m http.server 8080", 
+              "constraints": [], 
+              "container": {
+                "docker": {
+                  "forcePullImage": false, 
+                  "image": "python:3", 
+                  "network": "BRIDGE", 
+                  "parameters": [], 
+                  "portMappings": [
+                    {
+                      "containerPort": 8080, 
+                      "hostPort": 0, 
+                      "protocol": "tcp", 
+                      "servicePort": 10000
+                    }
+                  ], 
+                  "privileged": false
+                }, 
+                "type": "DOCKER", 
+                "volumes": []
+              }, 
+              "cpus": 0.5, 
+              "dependencies": [], 
+              "disk": 0.0, 
+              "env": {}, 
+              "executor": "", 
+              "healthChecks": [], 
+              "id": "/basic-3", 
+              "instances": 1, 
+              "labels": {}, 
+              "maxLaunchDelaySeconds": 3600, 
+              "mem": 32.0, 
+              "ports": [
+                10000
+              ], 
+              "requirePorts": false, 
+              "storeUrls": [], 
+              "upgradeStrategy": {
+                "maximumOverCapacity": 1.0, 
+                "minimumHealthCapacity": 1.0
+              }, 
+              "uris": [], 
+              "user": null, 
+              "version": "2015-11-29T12:46:48.384Z", 
+              "versionInfo": {
+                "lastConfigChangeAt": "2015-11-29T05:26:19.581Z", 
+                "lastScalingAt": "2015-11-29T12:46:48.384Z"
+              }
+            }
+          ], 
+          "dependencies": [], 
+          "groups": [], 
+          "id": "/", 
+          "version": "2015-11-29T12:46:48.384Z"
+        }, 
+        "version": "2015-11-29T12:46:48.384Z"
+      }, 
+      "timestamp": "2015-11-29T12:46:48.426Z"
+    }, 
+    {
+      "eventType": "group_change_success", 
+      "groupId": "/", 
+      "timestamp": "2015-11-29T12:46:48.459Z", 
+      "version": "2015-11-29T12:46:48.384Z"
+    }, 
+    {
+      "appId": "/basic-3", 
+      "eventType": "status_update_event", 
+      "host": "mesos-slave02", 
+      "message": "", 
+      "ports": [
+        31365
+      ], 
+      "slaveId": "697ee623-6bd9-4cd7-a44a-b44a98479fdc-S0", 
+      "taskId": "basic-3.414c5e1a-9697-11e5-81a1-02c4b78b488c", 
+      "taskStatus": "TASK_RUNNING", 
+      "timestamp": "2015-11-29T12:46:49.349Z", 
+      "version": "2015-11-29T12:46:48.384Z"
+    }, 
+    {
+      "eventType": "deployment_success", 
+      "id": "bd3681eb-8c82-4b4b-bf61-a45bee18c912", 
+      "plan": {
+        "id": "bd3681eb-8c82-4b4b-bf61-a45bee18c912", 
+        "original": {
+          "apps": [
+            {
+              "acceptedResourceRoles": null, 
+              "args": null, 
+              "backoffFactor": 1.15, 
+              "backoffSeconds": 1, 
+              "cmd": "python3 -m http.server 8080", 
+              "constraints": [], 
+              "container": {
+                "docker": {
+                  "forcePullImage": false, 
+                  "image": "python:3", 
+                  "network": "BRIDGE", 
+                  "parameters": [], 
+                  "portMappings": [
+                    {
+                      "containerPort": 8080, 
+                      "hostPort": 0, 
+                      "protocol": "tcp", 
+                      "servicePort": 10000
+                    }
+                  ], 
+                  "privileged": false
+                }, 
+                "type": "DOCKER", 
+                "volumes": []
+              }, 
+              "cpus": 0.5, 
+              "dependencies": [], 
+              "disk": 0.0, 
+              "env": {}, 
+              "executor": "", 
+              "healthChecks": [], 
+              "id": "/basic-3", 
+              "instances": 1, 
+              "labels": {}, 
+              "maxLaunchDelaySeconds": 3600, 
+              "mem": 32.0, 
+              "ports": [
+                10000
+              ], 
+              "requirePorts": false, 
+              "storeUrls": [], 
+              "upgradeStrategy": {
+                "maximumOverCapacity": 1.0, 
+                "minimumHealthCapacity": 1.0
+              }, 
+              "uris": [], 
+              "user": null, 
+              "version": "2015-11-29T12:41:00.828Z", 
+              "versionInfo": {
+                "lastConfigChangeAt": "2015-11-29T05:26:19.581Z", 
+                "lastScalingAt": "2015-11-29T12:41:00.828Z"
+              }
+            }
+          ], 
+          "dependencies": [], 
+          "groups": [], 
+          "id": "/", 
+          "version": "2015-11-29T12:41:00.828Z"
+        }, 
+        "steps": [
+          {
+            "actions": [
+              {
+                "app": "/basic-3", 
+                "type": "RestartApplication"
+              }
+            ]
+          }
+        ], 
+        "target": {
+          "apps": [
+            {
+              "acceptedResourceRoles": null, 
+              "args": null, 
+              "backoffFactor": 1.15, 
+              "backoffSeconds": 1, 
+              "cmd": "python3 -m http.server 8080", 
+              "constraints": [], 
+              "container": {
+                "docker": {
+                  "forcePullImage": false, 
+                  "image": "python:3", 
+                  "network": "BRIDGE", 
+                  "parameters": [], 
+                  "portMappings": [
+                    {
+                      "containerPort": 8080, 
+                      "hostPort": 0, 
+                      "protocol": "tcp", 
+                      "servicePort": 10000
+                    }
+                  ], 
+                  "privileged": false
+                }, 
+                "type": "DOCKER", 
+                "volumes": []
+              }, 
+              "cpus": 0.5, 
+              "dependencies": [], 
+              "disk": 0.0, 
+              "env": {}, 
+              "executor": "", 
+              "healthChecks": [], 
+              "id": "/basic-3", 
+              "instances": 1, 
+              "labels": {}, 
+              "maxLaunchDelaySeconds": 3600, 
+              "mem": 32.0, 
+              "ports": [
+                10000
+              ], 
+              "requirePorts": false, 
+              "storeUrls": [], 
+              "upgradeStrategy": {
+                "maximumOverCapacity": 1.0, 
+                "minimumHealthCapacity": 1.0
+              }, 
+              "uris": [], 
+              "user": null, 
+              "version": "2015-11-29T12:46:48.384Z", 
+              "versionInfo": {
+                "lastConfigChangeAt": "2015-11-29T05:26:19.581Z", 
+                "lastScalingAt": "2015-11-29T12:46:48.384Z"
+              }
+            }
+          ], 
+          "dependencies": [], 
+          "groups": [], 
+          "id": "/", 
+          "version": "2015-11-29T12:46:48.384Z"
+        }, 
+        "version": "2015-11-29T12:46:48.384Z"
+      }, 
+      "timestamp": "2015-11-29T12:46:49.359Z"
+    }, 
+    {
+      "currentStep": {
+        "actions": [
+          {
+            "app": "/basic-3", 
+            "type": "RestartApplication"
+          }
+        ]
+      }, 
+      "eventType": "deployment_step_success", 
+      "plan": {
+        "id": "bd3681eb-8c82-4b4b-bf61-a45bee18c912", 
+        "original": {
+          "apps": [
+            {
+              "acceptedResourceRoles": null, 
+              "args": null, 
+              "backoffFactor": 1.15, 
+              "backoffSeconds": 1, 
+              "cmd": "python3 -m http.server 8080", 
+              "constraints": [], 
+              "container": {
+                "docker": {
+                  "forcePullImage": false, 
+                  "image": "python:3", 
+                  "network": "BRIDGE", 
+                  "parameters": [], 
+                  "portMappings": [
+                    {
+                      "containerPort": 8080, 
+                      "hostPort": 0, 
+                      "protocol": "tcp", 
+                      "servicePort": 10000
+                    }
+                  ], 
+                  "privileged": false
+                }, 
+                "type": "DOCKER", 
+                "volumes": []
+              }, 
+              "cpus": 0.5, 
+              "dependencies": [], 
+              "disk": 0.0, 
+              "env": {}, 
+              "executor": "", 
+              "healthChecks": [], 
+              "id": "/basic-3", 
+              "instances": 1, 
+              "labels": {}, 
+              "maxLaunchDelaySeconds": 3600, 
+              "mem": 32.0, 
+              "ports": [
+                10000
+              ], 
+              "requirePorts": false, 
+              "storeUrls": [], 
+              "upgradeStrategy": {
+                "maximumOverCapacity": 1.0, 
+                "minimumHealthCapacity": 1.0
+              }, 
+              "uris": [], 
+              "user": null, 
+              "version": "2015-11-29T12:41:00.828Z", 
+              "versionInfo": {
+                "lastConfigChangeAt": "2015-11-29T05:26:19.581Z", 
+                "lastScalingAt": "2015-11-29T12:41:00.828Z"
+              }
+            }
+          ], 
+          "dependencies": [], 
+          "groups": [], 
+          "id": "/", 
+          "version": "2015-11-29T12:41:00.828Z"
+        }, 
+        "steps": [
+          {
+            "actions": [
+              {
+                "app": "/basic-3", 
+                "type": "RestartApplication"
+              }
+            ]
+          }
+        ], 
+        "target": {
+          "apps": [
+            {
+              "acceptedResourceRoles": null, 
+              "args": null, 
+              "backoffFactor": 1.15, 
+              "backoffSeconds": 1, 
+              "cmd": "python3 -m http.server 8080", 
+              "constraints": [], 
+              "container": {
+                "docker": {
+                  "forcePullImage": false, 
+                  "image": "python:3", 
+                  "network": "BRIDGE", 
+                  "parameters": [], 
+                  "portMappings": [
+                    {
+                      "containerPort": 8080, 
+                      "hostPort": 0, 
+                      "protocol": "tcp", 
+                      "servicePort": 10000
+                    }
+                  ], 
+                  "privileged": false
+                }, 
+                "type": "DOCKER", 
+                "volumes": []
+              }, 
+              "cpus": 0.5, 
+              "dependencies": [], 
+              "disk": 0.0, 
+              "env": {}, 
+              "executor": "", 
+              "healthChecks": [], 
+              "id": "/basic-3", 
+              "instances": 1, 
+              "labels": {}, 
+              "maxLaunchDelaySeconds": 3600, 
+              "mem": 32.0, 
+              "ports": [
+                10000
+              ], 
+              "requirePorts": false, 
+              "storeUrls": [], 
+              "upgradeStrategy": {
+                "maximumOverCapacity": 1.0, 
+                "minimumHealthCapacity": 1.0
+              }, 
+              "uris": [], 
+              "user": null, 
+              "version": "2015-11-29T12:46:48.384Z", 
+              "versionInfo": {
+                "lastConfigChangeAt": "2015-11-29T05:26:19.581Z", 
+                "lastScalingAt": "2015-11-29T12:46:48.384Z"
+              }
+            }
+          ], 
+          "dependencies": [], 
+          "groups": [], 
+          "id": "/", 
+          "version": "2015-11-29T12:46:48.384Z"
+        }, 
+        "version": "2015-11-29T12:46:48.384Z"
+      }, 
+      "timestamp": "2015-11-29T12:46:49.358Z"
+    }, 
+    {
+      "appId": "/basic-3", 
+      "eventType": "status_update_event", 
+      "host": "mesos-slave02", 
+      "message": "", 
+      "ports": [
+        31264
+      ], 
+      "slaveId": "697ee623-6bd9-4cd7-a44a-b44a98479fdc-S0", 
+      "taskId": "basic-3.722360c9-9696-11e5-81a1-02c4b78b488c", 
+      "taskStatus": "TASK_KILLED", 
+      "timestamp": "2015-11-29T12:46:49.909Z", 
+      "version": "2015-11-29T12:41:00.828Z"
+    }
+  ]
+}

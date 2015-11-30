@@ -1,0 +1,505 @@
+  107  ls
+  108  vi deploy_python_1.json
+  109  {   "id": "bridged-webapp",;   "cmd": "python3 -m http.server 8080",;   "cpus": 0.5,;   "mem": 64.0,;   "instances": 2,;   "container": {;     "type": "DOCKER",;     "docker": {;       "image": "python:3",;       "network": "BRIDGE",;       "portMappings": [;         { "containerPort": 8080, "hostPort": 0, "servicePort": 9000, "protocol": "tcp" },;         { "containerPort": 161, "hostPort": 0, "protocol": "udp"};       ];     };   },;   "healthChecks": [;     {       "protocol": "HTTP",;       "portIndex": 0,;       "path": "/",;       "gracePeriodSeconds": 5,;       "intervalSeconds": 20,;       "maxConsecutiveFailures": 3;     };   ]
+  110  cat deploy_python_1.json 
+  111  curl -X POST -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps -d@deploy_python_1.json
+  112  curl -X DELETE -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps/bridged-webapp -d@deploy_python_1.json
+  113  curl -X POST -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps -d@deploy_python_1.json
+  114  curl -X DELETE -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps/bridged-webapp -d@deploy_python_1.json
+  115  vi deploy_python_1.json
+  116  cp deploy_python_1.json deploy_python_2.json 
+  117  vi deploy_python_2.json
+  118  vi deploy_python_2.json
+  119  vi deploy_python_2.json
+  120  curl -X POST -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps -d@deploy_python_2.json
+  121  vi deploy_python_2.json
+  122  curl -X POST -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps -d@deploy_python_2.json
+  123  jq
+  124  brew install jq
+  125  jq '.' deploy_python_2.json 
+  126  vi deploy_python_2.json
+  127  vi deploy_python_2.json
+  128  jq '.' deploy_python_2.json 
+  129  curl -X POST -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps -d@deploy_python_2.json
+  130  dockerp s
+  131  docker ps
+  132  curl -X DELETE -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps/bridged-webapp -d@deploy_python_1.json
+  133  vi deploy_python_2.json
+  134  curl -X DELETE -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps/bridged-webapp -d@deploy_python_1.json
+  135  curl -X DELETE -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps/bridged-webapp -d@deploy_python_1.json
+  136  curl -X POST -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps -d@deploy_python_2.json
+  137  vi deploy_python_2.json
+  138  curl -X DELETE -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps/bridged-webapp -d@deploy_python_1.json
+  139  java -version
+  140  brew install marathon
+  141  brew updatr
+  142  brew update
+  143  docker-machine env docker-dev
+  144  docker-machine up docker-dev
+  145  docker-machine up default
+  146  docker-machine start default
+  147  eval "$(docker-machine env default)
+  148  eval "$(docker-machine env default)"
+  149  docker ps
+  150  docker --version
+  151  docker pull mesosphere/marathon:v0.11.1
+  152  docker run -d -p 8080:8080 mesosphere/marathon:v0.11.1 --zk zk://192.168.33.11:2181/marathon --master zk://192.168.33.11:2181/mesos
+  153  docker ps
+  154  docker logs f19
+  155  docker logs f19
+  156  docker logs f19
+  157  docker logs f19
+  158  docker logs f19
+  159  docker ps
+  160  docker-machine ip
+  161  docker-machine ip dev
+  162  docker-machine ip default
+  163  curl -X POST -H "Content-Type: application/json" http://192.168.99.100:8080/v2/apps -d@deploy_python_2.json
+  164  curl -X DELETE -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps/bridged-webapp -d@deploy_python_1.json
+  165  curl -X DELETE -H "Content-Type: application/json" http://localhos:8080/v2/apps/bridged-webapp -d@deploy_python_1.json
+  166  curl -X DELETE -H "Content-Type: application/json" http://localhost:8080/v2/apps/bridged-webapp -d@deploy_python_1.json
+  167  curl -X DELETE -H "Content-Type: application/json" http://192.168.99.100:8080/v2/apps/bridged-webapp -d@deploy_python_1.json
+  168  docker-machine ip default
+  169  docker ps
+  170  docker logs f19
+  171  docker logs -f f19
+  172  ping 192.168.33.11
+  173  docker-machine ssh default
+  174  docker run -d -p 8080:8080 mesosphere/marathon:v0.11.1 --hostname 192.168.99.100 --zk zk://192.168.33.11:2181/marathon --master zk://192.168.33.11:2181/mesos
+  175  docker run -net=host -d -p 8080:8080 mesosphere/marathon:v0.11.1 --hostname 192.168.99.100 --zk zk://192.168.33.11:2181/marathon --master zk://192.168.33.11:2181/mesos
+  176  docker run --help
+  177  docker run --net=host -d -p 8080:8080 mesosphere/marathon:v0.11.1 --hostname 192.168.99.100 --zk zk://192.168.33.11:2181/marathon --master zk://192.168.33.11:2181/mesos
+  178  docker ps
+  179  docker logs 99e
+  180  docker logs 99c
+  181  docker logs 99e
+  182  docker inspect 99e
+  183  ifconfig -a | grep inet
+  184  curl 192.168.0.13:8080
+  185  docker ps
+  186  docker logs 99e
+  187  docker ps
+  188  docker stop 99e
+  189  docker ps
+  190  ifconfig -a | grep inet
+  191  docker run --net=host -d -p 8080:8080 mesosphere/marathon:v0.11.1 --hostname 192.168.33.1 --zk zk://192.168.33.11:2181/marathon --master zk://192.168.33.11:2181/mesos
+  192  docker ps
+  193  docker ps
+  194  docker logs 3de
+  195  docker ps
+  196  docker stop 3ded
+  197  docker rm 3ded
+  198  docker ps
+  199  docker ps
+  200  docker ps
+  201  docker ps
+  202  docker run --net=host -d -p 8080:8080 mesosphere/marathon:v0.11.1 --hostname 192.168.33.1 --zk zk://192.168.33.11:2181/marathon --master zk://192.168.33.11:2181/mesos ----http_address=192.168.33.1
+  203  docker p
+  204  docker ps
+  205  docker logs c9f
+  206  docker run --net=host -d -p 8080:8080 mesosphere/marathon:v0.11.1 --hostname 192.168.33.1 --zk zk://192.168.33.11:2181/marathon --master zk://192.168.33.11:2181/mesos ----http_address=192.168.33.1
+  207  docker ps
+  208  docker ps
+  209  docker run --net=host -d -p 8080:8080 mesosphere/marathon:v0.11.1 --hostname 192.168.33.1 --zk zk://192.168.33.11:2181/marathon --master zk://192.168.33.11:2181/mesos 
+  210  docker ps
+  211  docker logs 683
+  212  docker logs 683
+  213  netstat -tupnel | grep 8080
+  214  netstat -tupnel 
+  215  netstat -antp
+  216  ss
+  217  netstat
+  218  netstat | grep 8080
+  219  docker os
+  220  docker ps
+  221  docker stop 683
+  222  docker ps
+  223  docker ps
+  224  curl -X POST -H "Content-Type: application/json" http://192.168.99.100:8080/v2/apps -d@deploy_python_2.json
+  225  curl -X POST -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps -d@deploy_python_2.json
+  226  cat deploy_python_2.json 
+  227  curl -X DELETE -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps/bridged-webapp -d@deploy_python_2.json
+  228  ls
+  229  vi deploy_python_2.json 
+  230  curl -X DELETE -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps/bridged-webapp -d@deploy_python_2.json
+  231  curl -X POST -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps -d@deploy_python_2.json
+  232  ls
+  233  vi deploy_python_1.json 
+  234  cp deploy_python_2.json deploy_python_3.json
+  235  vi deploy_python_3.json
+  236  vi deploy_python_3.json 
+  237  curl -X POST -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps -d@deploy_python_3.json
+  238  ls
+  239  cd ..
+  240  ls
+  241  ls -ltre
+  242  cd m
+  243  curl -X DELETE -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps/bridged-webapp2 -d@deploy_python_2.json
+  244  ls
+  245  cd marathon_test/
+  246  ls
+  247  vi deploy_python_3.json 
+  248  vi deploy_python_3.json 
+  249  vi deploy_python_3.json 
+  250  curl -X POST -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps -d@deploy_python_3.json
+  251  jq
+  252  jq '.' deploy_python_3.json 
+  253  vi deploy_python_3.json 
+  254  jq '.' deploy_python_3.json 
+  255  curl -X POST -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps -d@deploy_python_3.json
+  256  curl -X DELETE -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps/zookeeper-1 -d@deploy_python_2.json
+  257  curl -X POST -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps -d@deploy_python_3.json
+  258  curl -X DELETE -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps/zookeeper-1 -d@deploy_python_2.json
+  259  vi deploy_python_3.json 
+  260  vi deploy_python_2.json 
+  261  vi deploy_python_3.json 
+  262  curl -X POST -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps -d@deploy_python_3.json
+  263  ls
+  264  vi deploy_python_3.json 
+  265  ls
+  266  vi deploy_python_2.json 
+  267  vi deploy_python_3.json 
+  268  curl -X POST -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps -d@deploy_python_3.json
+  269  curl -X DELETE -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps/zookeeper-1 -d@deploy_python_2.json
+  270  ls
+  271  curl -X POST -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps -d@deploy_python_3.json
+  272  curl -X DELETE -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps/zookeeper-1 -d@deploy_python_2.json
+  273  curl -X POST -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps -d@deploy_python_3.json
+  274  curl -X DELETE -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps/zookeeper-1 -d@deploy_python_2.json
+  275  vi deploy_python_3.json 
+  276  vi deploy_python_3.json 
+  277  curl -X POST -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps -d@deploy_python_3.json
+  278  vi deploy_python_3.json 
+  279  curl -X DELETE -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps/zookeeper-1 -d@deploy_python_2.json
+  280  curl -X POST -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps -d@deploy_python_3.json
+  281  curl -X POST -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps -d@deploy_python_3.json
+  282  vi deploy_python_3.json 
+  283  curl -X POST -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps -d@deploy_python_3.json
+  284  vi deploy_python_3.json 
+  285  vi deploy_python_3.json 
+  286  curl -X POST -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps -d@deploy_python_3.json
+  287  vi deploy_python_3.json 
+  288  curl -X POST -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps -d@deploy_python_3.json
+  289  vi deploy_python_3.json 
+  290  vi deploy_python_3.json 
+  291  curl -X POST -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps -d@deploy_python_3.json
+  292  vi deploy_python_3.json 
+  293  curl -X POST -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps -d@deploy_python_3.json
+  294  curl -X DELETE -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps/zookeeper-1 -d@deploy_python_2.json
+  295  vi deploy_python_3.json 
+  296  curl -X POST -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps -d@deploy_python_3.json
+  297  vi deploy_python_3.json 
+  298  vi deploy_python_2.json 
+  299  curl -X DELETE -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps/zookeeper-1 -d@deploy_python_2.json
+  300  vi deploy_python_2.json 
+  301  vi deploy_python_3.json 
+  302  vi deploy_python_2.json 
+  303  vi deploy_python_3.json 
+  304  curl -X POST -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps -d@deploy_python_3.json
+  305  curl -X DELETE -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps/zookeeper-1 -d@deploy_python_2.json
+  306  vi deploy_python_3.json 
+  307  vi deploy_python_2.json 
+  308  vi deploy_python_3.json 
+  309  vi deploy_python_2.json 
+  310  vi deploy_python_3.json 
+  311  vi deploy_python_3.json 
+  312  curl -X POST -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps -d@deploy_python_3.json
+  313  vi deploy_python_3.json 
+  314  vi deploy_python_3json 
+  315  ls
+  316  vi deploy_python_3.json 
+  317  vi deploy_python_2.json 
+  318  vi deploy_python_3.json 
+  319  curl -X POST -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps -d@deploy_python_3.json
+  320  curl -X DELETE -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps/zookeeper-1 -d@deploy_python_2.json
+  321  vi deploy_python_3.json 
+  322  ls
+  323  vi deploy_python_3.json 
+  324  curl -X POST -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps -d@deploy_python_3.json
+  325  vi deploy_python_3.json 
+  326  curl -X DELETE -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps/zookeeper-1 -d@deploy_python_2.json
+  327  vi deploy_python_3.json 
+  328  curl -X POST -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps -d@deploy_python_3.json
+  329  curl -X POST -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps -d@deploy_python_3.json
+  330  vi deploy_python_3.json 
+  331  curl -X DELETE -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps/zookeeper-1 -d@deploy_python_2.json
+  332  curl -X POST -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps -d@deploy_python_3.json
+  333  curl -X DELETE -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps/zookeeper-1 -d@deploy_python_2.json
+  334  vi deploy_python_3.json 
+  335  vi deploy_python_3.json 
+  336  curl -X POST -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps -d@deploy_python_3.json
+  337  curl -X DELETE -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps/zookeeper-1 -d@deploy_python_2.json
+  338  curl -X POST -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps -d@deploy_python_3.json
+  339  curl -X DELETE -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps/zookeeper-1 -d@deploy_python_2.json
+  340  vi deploy_python_3.json 
+  341  curl -X POST -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps -d@deploy_python_3.json
+  342  curl -X DELETE -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps/zookeeper-1 -d@deploy_python_2.json
+  343  vi deploy_python_3.json 
+  344  vi deploy_python_3.json 
+  345  curl -X POST -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps -d@deploy_python_3.json
+  346  curl -X DELETE -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps/zookeeper-1 -d@deploy_python_2.json
+  347  docker ps
+  348  curl -X POST -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps -d@deploy_python_3.json
+  349  curl -X DELETE -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps/zookeeper-1 -d@deploy_python_2.json
+  350  curl -X POST -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps -d@deploy_python_3.json
+  351  curl -X DELETE -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps/zookeeper-1 -d@deploy_python_2.json
+  352  vi deploy_python_3.json 
+  353  curl -X POST -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps -d@deploy_python_3.json
+  354  curl -X DELETE -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps/zookeeper-1 -d@deploy_python_2.json
+  355  curl -X POST -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps -d@deploy_python_3.json
+  356  curl -X DELETE -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps/zookeeper-1 -d@deploy_python_2.json
+  357  vi deploy_python_3.json 
+  358  curl -X POST -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps -d@deploy_python_3.json
+  359  curl -X DELETE -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps/zookeeper-1 -d@deploy_python_2.json
+  360  stop mesos-slave
+  361  curl -X POST -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps -d@deploy_python_3.json
+  362  curl -X DELETE -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps/zookeeper-1 -d@deploy_python_2.json
+  363  vi deploy_python_3.json 
+  364  vi deploy_python_1.json 
+  365  vi deploy_python_2.json 
+  366  curl -X POST -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps -d@deploy_python_2.json
+  367  jq '.' deploy_python_2.json 
+  368  vi deploy_python_2.json 
+  369  curl -X POST -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps -d@deploy_python_2.json
+  370  vi deploy_python_2.json 
+  371  curl -X DELETE -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps/zookeeper-1 -d@deploy_python_2.json
+  372  curl -X DELETE -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps/bridged-webapp
+  373  curl -X POST -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps -d@deploy_python_2.json
+  374  curl -X DELETE -H "Content-Type: application/json" http://192.168.33.11:8080/v2/apps/bridged-webapp
+  375  ls
+  376  cat deploy_python_
+  377  cat deploy_python_3.json 
+  378  cat deploy_python_2.json 
+  379  ls
+  380  cat deploy_python_3.json 
+  381  cd ~/Projects/
+  382  ls
+  383  ls -ltr
+  384  cd kafka-docker/
+  385  ls
+  386  cd ..
+  387  ls
+  388  cd vagrant-mesos/
+  389  ls
+  390  cd standalone2/
+  391  ls
+  392  ssh vagrant@192.168.33.11
+  393  go
+  394  golang
+  395  brew install golang
+  396  cd ~/Projects/
+  397  ls
+  398  mkdir go-projects
+  399  cd go-projects/
+  400  /Users/vivekjuneja/Downloads/UE\ BOOM\ Update\ Assistant.app/Contents/MacOS/UE\ BOOM\ Update\ Assistant ; exit;
+  401  /Users/vivekjuneja/Downloads/UE\ BOOM\ Update\ Assistant.app/Contents/MacOS/UE\ BOOM\ Update\ Assistant ; exit;
+  402  /Users/vivekjuneja/Downloads/UE\ BOOM\ Update\ Assistant.app/Contents/MacOS/UE\ BOOM\ Update\ Assistant ; exit;
+  403  /Users/vivekjuneja/Downloads/UE\ BOOM\ Update\ Assistant.app/Contents/MacOS/UE\ BOOM\ Update\ Assistant ; exit;
+  404  go
+  405  ls
+  406  cd ~/Projects/
+  407  cd go-projects/
+  408  ls
+  409  go
+  410  mkdir hello
+  411  cd hello/
+  412  ls
+  413  ls
+  414  mkdir src
+  415  cd src/
+  416  ls
+  417  mkdir hello
+  418  ls
+  419  vi main.go
+  420  go
+  421  ls
+  422  mv main.go hello/
+  423  ls
+  424  cd ..
+  425  ls
+  426  cd ..
+  427  ls
+  428  ls
+  429  cd hello/
+  430  s
+  431  ls
+  432  ls -r
+  433  ls -R
+  434  export GOPATH=$(pwd)
+  435  echo $GOPATH
+  436  go install hello
+  437  ls
+  438  cd bin/
+  439  s
+  440  ls
+  441  ./hello 
+  442  ls
+  443  ls -R
+  444  ls
+  445  cd ..
+  446  ls
+  447  pwd
+  448  ls -R
+  449  ls
+  450  vi src/hello/main.go 
+  451  ls
+  452  go install hello
+  453  ls
+  454  ./bin/hello 
+  455  vi src/hello/main.go 
+  456  go install hello
+  457  ./bin/hello 
+  458  vi src/hello/main.go 
+  459  go install hello
+  460  vi src/hello/main.go 
+  461  go install hello
+  462  go install hello
+  463  ./bin/hello 
+  464  vi src/hello/main.go 
+  465  go install hello
+  466  vi src/hello/main.go 
+  467  go install hello
+  468  ./bin/hello 
+  469  ./bin/hello 
+  470  vi src/hello/main.go 
+  471  go install hello
+  472  ./bin/hello 
+  473  vi src/hello/main.go 
+  474  vi src/hello/main.go 
+  475  go install hello
+  476  vi src/hello/main.go 
+  477  go install hello
+  478  vi src/hello/main.go 
+  479  go install hello
+  480  vi src/hello/main.go 
+  481  cd ~/Projects/
+  482  ls
+  483  df -h .
+  484  git clone git@github.com:thefactory/marathon-logger.git
+  485  cd marathon
+  486  cd marathon-logger/
+  487  cd ..
+  488  ls -ltr
+  489  cd vagrant-mesos/
+  490  ls
+  491  cd standalone
+  492  ls
+  493  vagrant up
+  494  vagrant ssh
+  495  brew install marathon
+  496  brew update
+  497  sudo apt-get install openjdk-8-jdk
+  498  vagrant ssh
+  499  brew update
+  500  brew install marathon
+  501  history
+  502  curl 192.168.33.10:8080/events
+  503  curl localhost:5000/events
+  504  curl localhost:5000/events | jq '.events[].eevent
+
+
+Type'
+  505  curl localhost:5000/events | jq '.events[].eeventType'
+  506  curl localhost:5000/events | jq '.events[].eventType'
+  507  curl localhost:5000/events | jq '.events[].eventType' 
+  508  curl localhost:5000/events | jq '.events[].eventType' 
+  509  curl localhost:5000/events | jq '.events[].eventType' 
+  510  curl localhost:5000/events | jq '.events[0]
+'
+  511  curl localhost:5000/events | jq '.events[0]'
+  512  curl localhost:5000/events | jq '.events[0]'
+  513  curl localhost:5000/events | jq '.events[].eventType' 
+  514  curl localhost:5000/events | jq '.events[0]' | wc -l
+  515  curl localhost:5000/events | jq '.events[0]' | wc -l
+  516  curl localhost:5000/events | jq '.events[0]'
+  517  curl localhost:5000/events | jq '.events[0]' | wc -l
+  518  curl localhost:5000/events | jq '.events[0]' | wc 
+  519  curl localhost:5000/events | jq '.events[0]' 
+  520  curl localhost:5000/events | jq '.events[].eventType' | wc -;
+  521  curl localhost:5000/events | jq '.events[].eventType' | wc -l
+  522  curl localhost:5000/events | jq '.events[].eventType' 
+  523  curl localhost:5000/events | jq '.events[].eventType' | wc -l
+  524  curl localhost:5000/events | jq '.events[].eventType' > /dev/null | wc -l
+  525  curl localhost:5000/events | jq '.events[].eventType' > /dev/null
+  526  curl localhost:5000/events | jq '.events[].eventType' 
+  527  curl localhost:5000/events | jq '.events[].eventType' | wc -l
+  528  curl localhost:5000/events | jq '.events[].eventType' | wc -l
+  529  curl localhost:5000/events | jq '.events[].eventType' | grep group_change_success
+  530  curl localhost:5000/events | jq '.events[].eventType' 
+  531  curl localhost:5000/events | jq '.events[].eventType' 
+  532  num
+  533  bc
+  534  curl localhost:5000/events | jq '.events[].keys
+'
+  535  curl localhost:5000/events | jq '.events[].eventType' 
+  536  curl localhost:5000/events | jq '.events[].eventType' 
+  537  curl localhost:5000/events | jq '.events[].eventType' | {message: .eventType}
+  538  curl localhost:5000/events | jq '.events[] | {message: .eventType}
+  539  curl localhost:5000/events | jq '.events[]' | {message: .eventType}
+  540  jq
+  541  man jq
+  542  curl localhost:5000/events | jq '.events[] | {message: .eventType}'
+  543  curl localhost:5000/events | jq '.events[] | {message: .eventType}'
+  544  curl localhost:5000/events | jq '.events[] | map(select(. = "status_update_event"'
+  545  curl localhost:5000/events | jq '.events[].eventType | map(select(. = "status_update_event"))'
+  546* curl localhost:5000/events | jq '.events[].e
+  547  curl localhost:5000/events | jq '.events[]'
+  548  curl localhost:5000/events | jq '.events[] 
+  549  curl localhost:5000/events | jq '.events[] | .eventType'
+  550  curl localhost:5000/events | jq '.events[] | select(.eventType = "group_change_success')'
+  551  curl localhost:5000/events | jq '.events[] | select(.eventType = "group_change_success")'
+  552  curl localhost:5000/events | jq '.events[] | .eventType'
+  553  curl localhost:5000/events | jq '.events[] | select(.eventType = "group_change_success")' | wc -l
+  554  curl localhost:5000/events | jq '.events[] | select(.eventType = "group_change_success")'
+  555  curl localhost:5000/events | jq '.events[] '
+  556  curl localhost:5000/events | jq '.events[].eventType '
+  557  curl localhost:5000/events | jq '.events[].eventType = "status_update_event" '
+  558  curl localhost:5000/events | jq '.events[].eventType '
+  559  curl localhost:5000/events | jq '.events[].eventType = "subscribe_event" '
+  560  curl localhost:5000/events | jq '.events[].eventType = "status_update_event" '
+  561  curl localhost:5000/events | jq '.events[].eventType = "subscribe_event" '
+  562  curl localhost:5000/events | jq '.events[].eventType = "subscribe_event" ' 
+  563  curl localhost:5000/events | jq '.events[] ' 
+  564  curl localhost:5000/events | jq '.events[]
+  565  curl localhost:5000/events | jq '.events[]'
+  566  curl localhost:5000/events | jq '.events[].eventType'
+  567  curl localhost:5000/events | jq '.events[]'
+  568  curl localhost:5000/events | jq '.events[]'
+  569  curl localhost:5000/events | jq '.events[] | length'
+  570  curl localhost:5000/events | jq '.events[].eventType | length'
+  571  curl localhost:5000/events | jq '.events["eventType"]'
+  572  curl localhost:5000/events | jq '.events["eventType"]'
+  573  curl localhost:5000/events | jq '.events[].eventType'
+  574  curl localhost:5000/events | jq '.events[] | select (.eventType == "subscribe_event"')'
+  575  curl localhost:5000/events | jq '.events[] | select (.eventType == "subscribe_event")'
+  576  curl localhost:5000/events | jq '.events[] | select (.eventType == "subscribe_event")'
+  577  curl localhost:5000/events | jq '.events[].eventType'
+  578  curl localhost:5000/events | jq '.events[] | select (.eventType == "group_change_success")'
+  579  curl localhost:5000/events | jq '.events[] | select (.eventType == "status_update_event")'
+  580  #curl localhost:5000/events | jq '.events[] | select (.eventType == "status_update_event")'
+  581  #curl localhost:5000/events | jq '.events[] | select (.eventType == "status_update_event")'
+  582  curl localhost:5000/events | jq '.events[].eventType'
+  583  #curl localhost:5000/events | jq '.events[] | select (.eventType == "status_update_event")'
+  584  #curl localhost:5000/events | jq '.events[] | select (.eventType == "subscribe_event")'
+  585  #curl localhost:5000/events | jq '.events[] | select (.eventType == "subscribe_event")'
+  586  curl localhost:5000/events | jq '.events[] | select (.eventType == "subscribe_event")'
+  587  docker run --name some-redis -d redis redis-server --appendonly yes
+  588  eval "$(docker-machine env default)"
+  589  docker run --name some-redis -d redis redis-server --appendonly yes
+  590  docker ps
+  591  docker run -it --link some-redis:redis --rm redis sh -c 'exec redis-cli -h "$REDIS_PORT_6379_TCP_ADDR" -p "$REDIS_PORT_6379_TCP_PORT"'
+  592  ls
+  593  docker ps
+  594  curl localhost:5000/events | jq '.events[] | select (.eventType == "subscribe_event")'
+  595  curl localhost:5000/events | jq '.events[].eventType'
+  596  curl localhost:5000/events | jq '.events[] | select (.eventType == "deployment_success")'
+  597  curl localhost:5000/events | jq '.events[] | select (.eventType == "deployment_success")' | wc -l
+  598  curl localhost:5000/events | jq '.events[] | select (.eventType == "deployment_success")' 
+  599  curl localhost:5000/events | jq '.events[] | select (.eventType == "deployment_success") | .eventType' 
+  600  curl localhost:5000/events | jq '.events[] | select (.eventType == "deployment_success") | .eventType' | wc -l
+  601  curl localhost:5000/events | jq '.events[] | select (.eventType == "deployment_success") | .eventType' | wc -l
+  602  curl localhost:5000/events | jq '.events[] | select (.eventType == "deployment_success") | .eventType' | wc -l
+  603  #curl localhost:5000/events | jq '.events[] | select (.eventType == "deployment_success") | .eventType' | wc -l
+  604  cd ~/Projects/marathon-logger/
+  605  history | tail -n 5 
+  606  history > bash_history_marathon_logger.txt
