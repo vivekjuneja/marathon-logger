@@ -1,5 +1,5 @@
 FROM thefactory/python
-MAINTAINER Mike Babineau mike@thefactory.com
+MAINTAINER Vivek vivek@gsshop.com
 
 ADD . /opt/marathon-logger
 RUN pip install -r /opt/marathon-logger/requirements.txt

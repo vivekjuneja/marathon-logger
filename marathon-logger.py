@@ -8,7 +8,14 @@ import urlparse
 from flask import Flask, request, jsonify
 import marathon
 
-from stores import InMemoryStore, SyslogUdpStore
+from stores import InMemoryStore, SyslogUdpStore, ElasticSearchStore
+
+import json
+
+import logging
+
+log = logging.getLogger('werkzeug')
+log.disabled = True
 
 
 app = Flask(__name__)
@@ -22,13 +29,32 @@ def on_exit(marathon_client, callback_url):
 
 @app.route('/events', methods=['POST'])
 def event_receiver():
+    #print event
     event = request.get_json()
     event_store.save(event)
+    
+    print json.dumps(event)
     return ''
 
 @app.route('/events', methods=['GET'])
 def list_events():
+    #print jsonify({'events': event_store.list()})
     return jsonify({'events': event_store.list()})
+
+
+@app.route('/restart-events', methods=['GET'])
+def list_restart_events():
+    all_event_list = event_store.list()
+    print 'event length : ' + str(len(all_event_list))
+    all_events = jsonify({'events': all_event_list})
+    # print 'all_events ' + str(all_event_list)
+    print 'parsing the json ..... '
+    parsed_json = json.loads("{'hello': 'world'}")
+    #print parsed_json["hello"]
+    # print event_store.list()
+    return "hello"
+
+
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Marathon Logging Service')
@@ -45,6 +71,8 @@ if __name__ == '__main__':
         event_store = InMemoryStore(event_store_url)
     elif event_store_url.scheme == 'syslog':
         event_store = SyslogUdpStore(event_store_url)
+    elif event_store_url.scheme == "elasticsearch":
+        event_store = ElasticSearchStore(event_store_url)
     else:
         print 'Invalid event store type: "{scheme}" (from "{url}")'.format(scheme=event_store_url.scheme, url=args.event_store)
         sys.exit(1)
