@@ -10,7 +10,9 @@ import datetime
 class ElasticSearchStore(object):
 
     es = None
+    index = None
     current_id = 1
+    index_type = None
 
     def __init__(self, url):
 
@@ -18,6 +20,9 @@ class ElasticSearchStore(object):
         print 'Configuring elasticsearch store with ' + str(url)
         self.es = Elasticsearch([{'host': '10.52.32.59', 'port': '9200', 'use_ssl': False}])
         print self.es
+ 
+        self.index = "my-index"
+        self.index_type = "marathon"
 
         return None
 
@@ -28,13 +33,13 @@ class ElasticSearchStore(object):
         try:
             self.current_id = self.current_id + 1
             if 'appId' in event:
-                self.es.index(index="my-index-temp", doc_type="marathon", id=self.current_id, body={"log_type": "marathon", "log_id": self.current_id, "eventType" : event["eventType"], "timestamp": event["timestamp"], "appId": event["appId"]})
+                self.es.index(index= self.index, doc_type=self.index_type, id=self.current_id, body={"log_type": "marathon", "log_id": self.current_id, "eventType" : event["eventType"], "timestamp": event["timestamp"], "appId": event["appId"]})
             elif 'plan' in event:
                 length = len(event["plan"]["target"]["groups"])
                 print 'length : ' + str(length)
                 for i in range(0,length):
                     print "ENV : " + str(event["plan"]["target"]["groups"][i]["groups"][0]["apps"][0]["labels"]["ENV"])
-                    self.es.index(index="my-index-temp", doc_type="marathon", id=self.current_id, body={"log_type": "marathon", "log_id": self.current_id, "eventType" : event["eventType"], "timestamp": event["timestamp"], "ID": event["plan"]["id"], "application": event["plan"]["target"]["groups"][i]["groups"][0]["apps"][0]["labels"]["JOB_NAME"], "deploy_id": event["plan"]["target"]["groups"][i]["groups"][0]["apps"][0]["labels"]["DEPLOYID"], "environment": event["plan"]["target"]["groups"][i]["groups"][0]["apps"][0]["labels"]["ENV"] })
+                    self.es.index(index= self.index, doc_type=self.index_type, id=self.current_id, body={"log_type": "marathon", "log_id": self.current_id, "eventType" : event["eventType"], "timestamp": event["timestamp"], "ID": event["plan"]["id"], "application": event["plan"]["target"]["groups"][i]["groups"][0]["apps"][0]["labels"]["PROJECT"], "deploy_id": event["plan"]["target"]["groups"][i]["groups"][0]["apps"][0]["labels"]["DEPLOYID"], "environment": event["plan"]["target"]["groups"][i]["groups"][0]["apps"][0]["labels"]["ENV"] })
                     self.current_id = self.current_id + 1
         except Exception as inst:
             print "Exception happened !"
