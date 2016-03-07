@@ -28,13 +28,13 @@ class ElasticSearchStore(object):
         try:
             self.current_id = self.current_id + 1
             if 'appId' in event:
-                self.es.index(index="my-index", doc_type="marathon", id=self.current_id, body={"eventType" : event["eventType"], "timestamp": event["timestamp"], "appId": event["appId"]})
+                self.es.index(index="my-index-temp", doc_type="marathon", id=self.current_id, body={"log_type": "marathon", "log_id": self.current_id, "eventType" : event["eventType"], "timestamp": event["timestamp"], "appId": event["appId"]})
             elif 'plan' in event:
                 length = len(event["plan"]["target"]["groups"])
                 print 'length : ' + str(length)
                 for i in range(0,length):
                     print "ENV : " + str(event["plan"]["target"]["groups"][i]["groups"][0]["apps"][0]["labels"]["ENV"])
-                    self.es.index(index="my-index", doc_type="marathon", id=self.current_id, body={"eventType" : event["eventType"], "timestamp": event["timestamp"], "ID": event["plan"]["id"], "application": event["plan"]["target"]["groups"][i]["groups"][0]["apps"][0]["labels"]["JOB_NAME"], "deploy_id": event["plan"]["target"]["groups"][i]["groups"][0]["apps"][0]["labels"]["DEPLOYID"], "environment": event["plan"]["target"]["groups"][i]["groups"][0]["apps"][0]["labels"]["ENV"] })
+                    self.es.index(index="my-index-temp", doc_type="marathon", id=self.current_id, body={"log_type": "marathon", "log_id": self.current_id, "eventType" : event["eventType"], "timestamp": event["timestamp"], "ID": event["plan"]["id"], "application": event["plan"]["target"]["groups"][i]["groups"][0]["apps"][0]["labels"]["JOB_NAME"], "deploy_id": event["plan"]["target"]["groups"][i]["groups"][0]["apps"][0]["labels"]["DEPLOYID"], "environment": event["plan"]["target"]["groups"][i]["groups"][0]["apps"][0]["labels"]["ENV"] })
                     self.current_id = self.current_id + 1
         except Exception as inst:
             print "Exception happened !"
