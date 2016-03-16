@@ -11,41 +11,67 @@ class ElasticSearchStore(object):
 
     es = None
     index = None
-    current_id = 1
+    current_id = 1 # Used for elasticsearch _id 
     index_type = None
+    old_deploy_ids = []
+    log = logging.getLogger('werkzeug')
+    log_type = None
 
     def __init__(self, url):
 
-        print 'url : ' + str(url) 
-        print 'Configuring elasticsearch store with ' + str(url)
-        self.es = Elasticsearch([{'host': '10.52.32.59', 'port': '9200', 'use_ssl': False}])
-        print self.es
- 
+        server = str(url.hostname)
+        port = str(url.port)        
+        self.log.info('Configuring elasticsearch store with ' + server + ":" + port)
+        self.es = Elasticsearch([{'host': server, 'port': port, 'use_ssl': False}])
+        
         self.index = "my-index"
         self.index_type = "marathon"
+        self.log_type = "marathon"
+
+
+        self.log = logging.getLogger('marathon-logger')
+        facility = logging.handlers.SysLogHandler.LOG_USER
+        f = logging.Formatter('marathon-logger: %(message)s')
+       
+        self.log.setLevel(logging.getLevelName('INFO'))
 
         return None
 
     def save(self, event):
-        print "Save Event to ElasticSearchStore"
-        #print "event : " + str(event)
-
         try:
             self.current_id = self.current_id + 1
             if 'appId' in event:
-                self.es.index(index= self.index, doc_type=self.index_type, id=self.current_id, body={"log_type": "marathon", "log_id": self.current_id, "eventType" : event["eventType"], "timestamp": event["timestamp"], "appId": event["appId"]})
+                self.es.index(index= self.index, doc_type=self.index_type, id=self.current_id, body={"log_type": "marathon", "log_id": self.current_id, "event_type" : event["eventType"], "timestamp": event["timestamp"], "app_id": event["appId"]})
             elif 'plan' in event:
-                length = len(event["plan"]["target"]["groups"])
-                print 'length : ' + str(length)
-                for i in range(0,length):
-                    print "ENV : " + str(event["plan"]["target"]["groups"][i]["groups"][0]["apps"][0]["labels"]["ENV"])
-                    self.es.index(index= self.index, doc_type=self.index_type, id=self.current_id, body={"log_type": "marathon", "log_id": self.current_id, "eventType" : event["eventType"], "timestamp": event["timestamp"], "ID": event["plan"]["id"], "application": event["plan"]["target"]["groups"][i]["groups"][0]["apps"][0]["labels"]["PROJECT"], "deploy_id": event["plan"]["target"]["groups"][i]["groups"][0]["apps"][0]["labels"]["DEPLOYID"], "environment": event["plan"]["target"]["groups"][i]["groups"][0]["apps"][0]["labels"]["ENV"] })
-                    self.current_id = self.current_id + 1
+                length = len(event["plan"]["target"]["groups"]) # Total number of app groups in the target state
+                size_original_groups = len(event["plan"]["original"]["groups"]) # Total number of app groups in the original state
+                
+                if length > size_original_groups:
+                    new_group_id = size_original_groups
+                else:
+                    new_group_id = size_original_groups - 1
+                
+                labels = event["plan"]["target"]["groups"][new_group_id]["groups"][0]["apps"][0]["labels"]
+
+                if "ENV" not in labels:
+                    return
+
+                environment = labels["ENV"] 
+                print 'env : ' + str(environment)
+                
+                eventType = event["eventType"]
+                timestamp = event["timestamp"]
+                app_id = event["plan"]["id"]
+                project_name = event["plan"]["target"]["groups"][new_group_id]["groups"][0]["apps"][0]["labels"]["PROJECT"]
+                deploy_id = event["plan"]["target"]["groups"][new_group_id]["groups"][0]["apps"][0]["labels"]["DEPLOYID"]
+
+                self.es.index(index= self.index, doc_type=self.index_type, body={"log_type": self.log_type,  "event_type" : eventType, "timestamp": timestamp, "marathon_deploy_id": app_id, "application": project_name, "deploy_id": deploy_id, "environment": environment})
+                self.current_id = self.current_id + 1
         except Exception as inst:
             print "Exception happened !"
             print inst
 
-        print "Save Done !"
+        print "Sent to ElasticSearchStore !"
 
     def list(self):
         #return list(self.events)

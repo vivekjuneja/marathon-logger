@@ -15,7 +15,7 @@ import json
 import logging
 
 log = logging.getLogger('werkzeug')
-log.disabled = True
+
 
 
 app = Flask(__name__)
@@ -40,20 +40,6 @@ def event_receiver():
 def list_events():
     #print jsonify({'events': event_store.list()})
     return jsonify({'events': event_store.list()})
-
-
-@app.route('/restart-events', methods=['GET'])
-def list_restart_events():
-    all_event_list = event_store.list()
-    print 'event length : ' + str(len(all_event_list))
-    all_events = jsonify({'events': all_event_list})
-    # print 'all_events ' + str(all_event_list)
-    print 'parsing the json ..... '
-    parsed_json = json.loads("{'hello': 'world'}")
-    #print parsed_json["hello"]
-    # print event_store.list()
-    return "hello"
-
 
 
 if __name__ == '__main__':
