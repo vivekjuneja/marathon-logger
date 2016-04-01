@@ -8,7 +8,7 @@ import urlparse
 from flask import Flask, request, jsonify
 import marathon
 
-from stores import InMemoryStore, SyslogUdpStore, ElasticSearchStore
+from stores import InMemoryStore, SyslogUdpStore, ElasticSearchStore, CustomEndPointStore
 
 import json
 
@@ -59,6 +59,8 @@ if __name__ == '__main__':
         event_store = SyslogUdpStore(event_store_url)
     elif event_store_url.scheme == "elasticsearch":
         event_store = ElasticSearchStore(event_store_url)
+    elif event_store_url.scheme == "customstore":
+        event_store = CustomEndPointStore(event_store_url)
     else:
         print 'Invalid event store type: "{scheme}" (from "{url}")'.format(scheme=event_store_url.scheme, url=args.event_store)
         sys.exit(1)
