@@ -21,11 +21,16 @@ class CustomEndPointStore(object):
 
     def __init__(self, url):
 
+        
         server = str(url.hostname)
         port = str(url.port)        
-        self.log.info('Configuring custom store with ' + server + ":" + port)
+        path = str(url.path)
+        
+        self.url = server + ":" + port  + path
         self.host = server
         self.port = port
+
+        print 'Configuring custom store with ' + self.url 
         
         self.index = "my-index"
         self.index_type = "marathon"
@@ -71,12 +76,16 @@ class CustomEndPointStore(object):
 
                 #self.es.index(index= self.index, doc_type=self.index_type, body={"log_type": self.log_type,  "event_type" : eventType, "timestamp": timestamp, "marathon_deploy_id": app_id, "application": project_name, "deploy_id": deploy_id, "environment": environment})
 
-                request_query_data  = {"environment": environment, "application": project_name, "event_type": eventType, "timestamp": timestamp, "deploy_id":deploy_id, "log_type": self.log_type, "marathon_deploy_id": app_id}
-                custom_store_full_url = "http://"+self.host+":"+self.port+"/api/marathon/avg_time?event_log="+str(json.dumps(request_query_data))
+                request_query_data  = {"environment": environment, "application": project_name, "event_type": eventType, "timestamp": timestamp, "cd_deploy_id":deploy_id, "log_type": self.log_type, "dm_deploy_id": app_id}
+               
+
+                custom_store_full_url = "http://"+  self.url #+"/api/marathon/avg_time?event_log="+str(json.dumps(request_query_data))
                 print 'custom_store_full_url ' + str(custom_store_full_url)
 
-                r = requests.get(custom_store_full_url)
+                #r = requests.get(custom_store_full_url)
+                r = requests.post(custom_store_full_url, data=json.dumps(request_query_data))
                 data = json.loads(r.content)
+
                 print data
 
                 self.current_id = self.current_id + 1
